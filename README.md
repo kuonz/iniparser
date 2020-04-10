@@ -46,7 +46,7 @@
 
 ```ini
 # 默认节内容
-name="name" 
+name=kuonz 
 version=0.0.1
 
 [mysql]
@@ -66,21 +66,21 @@ import (
 
 func main() {
   // 解析 demo.ini
-  ic, err := iniparser.Parser("./demo.ini")
+  ic, err := iniparser.Parse("./demo.ini")
 
   if err != nil {
-    panic("parse error: ", err.Error())
+    panic(err.Error())
   }
 
   // 获取默认节内容
   if name, ok := ic.GetDefault("name"); !ok {
-    fmt.Printn("don't exist the key name")
+    fmt.Println("don't exist the key name")
   } else {
     fmt.Println(name)
   }
 
   if author, ok := ic.GetDefault("author"); !ok {
-    fmt.Printn("don't exist key author")
+    fmt.Println("don't exist key author")
   } else {
     fmt.Println(author)
   }
@@ -89,7 +89,7 @@ func main() {
   if username, ok := ic.Get("mysql", "username"); !ok {
     fmt.Println("session mysql don't exist the key username")
   } else {
-    fmt.Println(usename)
+    fmt.Println(username)
   }
 }
 ```
